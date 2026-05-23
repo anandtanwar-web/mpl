@@ -23,7 +23,11 @@
 }
 
 .logo .dot {
-  color: var(--primary-color);
+  color: var(--ball-red);
+  margin-left: 2px;
+  display: inline-block;
+  transform: scale(1.5);
+  text-shadow: 0 0 10px rgba(217, 4, 41, 0.5);
 }
 
 .nav-links {
