@@ -1,6 +1,11 @@
+import React from 'react';
 import '../styles/Home.css';
 
-const Home: React.FC = () => {
+interface HomeProps {
+  setCurrentPage: (page: string) => void;
+}
+
+const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
   return (
     <div className="home-page">
       {/* Hero Section */}
@@ -10,7 +15,12 @@ const Home: React.FC = () => {
             <h1 className="fade-in">The Pulse of <span className="highlight">Cricket</span> in Manchester</h1>
             <p className="fade-in-delay">Manchester's premier franchise-based tennis ball cricket league. High stakes, high energy, professional cricket.</p>
             <div className="hero-btns fade-in-delay">
-              <button className="btn btn-primary">Join the League</button>
+              <button 
+                className="btn btn-primary" 
+                onClick={() => setCurrentPage('registration')}
+              >
+                Join the League
+              </button>
               <button className="btn btn-secondary">View Schedule</button>
             </div>
           </div>
@@ -73,7 +83,12 @@ const Home: React.FC = () => {
           <div className="cta-box">
             <h2>Ready to Play?</h2>
             <p>Registration for the 2026 season is now open. Don't miss your chance to be part of the legacy.</p>
-            <button className="btn btn-primary btn-large">Register Now</button>
+            <button 
+              className="btn btn-primary btn-large" 
+              onClick={() => setCurrentPage('registration')}
+            >
+              Register Now
+            </button>
           </div>
         </div>
       </section>

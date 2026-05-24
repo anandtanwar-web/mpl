@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <Navbar setCurrentPage={setCurrentPage} />
       <main>
-        {currentPage === 'home' ? <Home /> : <Registration />}
+        {currentPage === 'home' ? <Home setCurrentPage={setCurrentPage} /> : <Registration />}
       </main>
       <Footer />
     </div>
