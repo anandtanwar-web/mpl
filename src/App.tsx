@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar setCurrentPage={setCurrentPage} />
+      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <main>
         {currentPage === 'home' ? <Home setCurrentPage={setCurrentPage} /> : <Registration />}
       </main>
