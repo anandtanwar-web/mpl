@@ -1,19 +1,18 @@
 .navbar {
-  background-color: var(--color-blue); /* Solid Blue Banner */
-  height: 70px;
+  background-color: var(--color-blue);
+  height: 80px;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .nav-container {
   display: flex;
   align-items: center;
-  justify-content: flex-start; /* Logo on left, links follow */
-  gap: 50px;
+  justify-content: space-between; /* Logo on left, links on right */
   width: 100%;
 }
 
@@ -22,46 +21,61 @@
   font-weight: 900;
   color: var(--text-white);
   cursor: pointer;
-}
-
-.logo .dot {
-  color: var(--color-yellow); /* Yellow dot matches SSPL theme better on blue */
-  margin-left: 2px;
-  display: inline-block;
-  transform: scale(1.2);
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 30px;
+  gap: 20px;
   align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .nav-links a, .nav-link-btn {
   color: var(--text-white);
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  font-size: 0.95rem;
-  letter-spacing: 0.5px;
-  transition: opacity 0.3s ease;
+  font-size: 0.9rem;
+  letter-spacing: 0.8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+}
+
+.nav-link-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .nav-links a:hover, .nav-link-btn:hover {
-  opacity: 0.8;
   color: var(--color-yellow);
 }
 
 .highlight-link {
   background-color: var(--color-orange);
-  padding: 8px 20px;
+  padding: 10px 20px !important;
   border-radius: 4px;
-  color: var(--text-white) !important;
+  margin-left: 10px;
+  transition: all 0.3s ease;
 }
 
 .highlight-link:hover {
   background-color: var(--color-pink);
-  opacity: 1 !important;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
