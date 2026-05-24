@@ -1,59 +1,67 @@
 .navbar {
-  background-color: rgba(18, 18, 18, 0.85);
-  backdrop-filter: blur(10px);
-  height: 80px;
+  background-color: var(--color-blue); /* Solid Blue Banner */
+  height: 70px;
   display: flex;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .nav-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: flex-start; /* Logo on left, links follow */
+  gap: 50px;
   width: 100%;
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 900;
   color: var(--text-white);
+  cursor: pointer;
 }
 
 .logo .dot {
-  color: var(--ball-red);
+  color: var(--color-yellow); /* Yellow dot matches SSPL theme better on blue */
   margin-left: 2px;
   display: inline-block;
-  transform: scale(1.5);
-  text-shadow: 0 0 10px rgba(217, 4, 41, 0.5);
+  transform: scale(1.2);
 }
 
 .nav-links {
   display: flex;
   list-style: none;
   gap: 30px;
+  align-items: center;
 }
 
-.nav-links a:hover {
-  color: var(--primary-color);
-}
-
-.nav-cta {
-  background: linear-gradient(45deg, var(--color-orange), var(--color-pink));
+.nav-links a, .nav-link-btn {
   color: var(--text-white);
-  padding: 10px 25px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  border-radius: 4px;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  transition: opacity 0.3s ease;
 }
 
-.nav-cta:hover {
-  background: linear-gradient(45deg, var(--color-pink), var(--color-purple));
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(251, 86, 7, 0.4);
+.nav-links a:hover, .nav-link-btn:hover {
+  opacity: 0.8;
+  color: var(--color-yellow);
+}
+
+.highlight-link {
+  background-color: var(--color-orange);
+  padding: 8px 20px;
+  border-radius: 4px;
+  color: var(--text-white) !important;
+}
+
+.highlight-link:hover {
+  background-color: var(--color-pink);
+  opacity: 1 !important;
 }
 
 @media (max-width: 768px) {
