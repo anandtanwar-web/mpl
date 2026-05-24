@@ -53,14 +53,27 @@
 .red-tennis-ball-img {
   width: 100%;
   height: auto;
-  max-width: 350px;
-  filter: drop-shadow(0 0 30px rgba(217, 4, 41, 0.4));
-  animation: floatBall 8s ease-in-out infinite;
+  max-width: 380px;
+  filter: drop-shadow(0 0 40px rgba(217, 4, 41, 0.5));
+  animation: dynamicBall 10s ease-in-out infinite;
 }
 
-@keyframes floatBall {
-  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-  50% { transform: translateY(-30px) rotate(5deg) scale(1.05); }
+@keyframes dynamicBall {
+  0% { 
+    transform: translateY(0) rotate(0deg) scale(1); 
+  }
+  25% {
+    transform: translateY(-20px) rotate(90deg) scale(1.02);
+  }
+  50% { 
+    transform: translateY(-40px) rotate(180deg) scale(1.05); 
+  }
+  75% {
+    transform: translateY(-20px) rotate(270deg) scale(1.02);
+  }
+  100% { 
+    transform: translateY(0) rotate(360deg) scale(1); 
+  }
 }
 
 .hero-overlay {
