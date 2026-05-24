@@ -26,48 +26,21 @@
 /* Hero Styles */
 .hero {
   height: 90vh;
-  background: radial-gradient(circle at 70% 30%, rgba(217, 4, 41, 0.15) 0%, transparent 50%),
-              linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)),
-              url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-  background-size: cover;
+  background-color: var(--secondary-color);
+  background-image: url('/red-tennis-ball.png');
+  background-size: contain;
   background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   position: relative;
   overflow: hidden;
+  animation: heroBgZoom 20s ease-in-out infinite alternate;
 }
 
-.animated-ball-container {
-  position: absolute;
-  right: 10%;
-  top: 15%;
-  width: 400px;
-  height: 400px;
-  z-index: 1;
-  pointer-events: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.red-tennis-ball-img {
-  width: 100%;
-  height: auto;
-  max-width: 380px;
-  filter: drop-shadow(0 0 40px rgba(217, 4, 41, 0.5));
-  animation: dynamicBall 10s ease-in-out infinite;
-}
-
-@keyframes dynamicBall {
-  0% { 
-    transform: translateY(0) scale(1); 
-  }
-  50% { 
-    transform: translateY(-40px) scale(1.05); 
-  }
-  100% { 
-    transform: translateY(0) scale(1); 
-  }
+@keyframes heroBgZoom {
+  from { background-size: 50%; }
+  to { background-size: 60%; }
 }
 
 .hero-overlay {
@@ -76,7 +49,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(18,18,18,1) 0%, rgba(18,18,18,0.3) 100%);
+  background: linear-gradient(90deg, rgba(18,18,18,0.9) 0%, rgba(18,18,18,0.2) 100%);
   z-index: 1;
 }
 
