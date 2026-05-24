@@ -6,14 +6,16 @@
   top: 0;
   z-index: 1000;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
   height: 100%;
 }
 
@@ -22,8 +24,9 @@
   font-weight: 900;
   color: var(--text-white);
   cursor: pointer;
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0;
 }
 
 .logo .dot {
@@ -32,18 +35,21 @@
 }
 
 .nav-links {
-  display: flex;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
   list-style: none;
-  gap: 10px;
-  align-items: center;
+  gap: 15px;
+  align-items: center !important;
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
 .nav-links li {
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
+  height: 100%;
 }
 
 .nav-link-btn, .nav-links a {
@@ -55,11 +61,13 @@
   font-size: 0.9rem;
   letter-spacing: 0.8px;
   text-decoration: none;
-  padding: 10px 15px;
+  padding: 0 15px;
+  height: 100%;
   cursor: pointer;
   transition: color 0.3s ease;
-  display: flex;
-  align-items: center;
+  display: flex !important;
+  align-items: center !important;
+  white-space: nowrap;
 }
 
 .nav-link-btn:hover, .nav-links a:hover {
@@ -71,7 +79,8 @@
   color: var(--text-white) !important;
   padding: 10px 25px !important;
   border-radius: 4px;
-  margin-left: 15px;
+  margin-left: 10px;
+  height: auto !important; /* Register button doesn't need to be full height of navbar */
   transition: all 0.3s ease !important;
 }
 
@@ -82,7 +91,17 @@
 }
 
 @media (max-width: 768px) {
+  .nav-container {
+    padding: 0 10px;
+  }
+  .logo {
+    font-size: 1.8rem;
+  }
   .nav-links {
-    display: none;
+    gap: 5px;
+  }
+  .nav-link-btn, .nav-links a {
+    padding: 0 8px;
+    font-size: 0.8rem;
   }
 }
