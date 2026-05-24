@@ -16,7 +16,11 @@ const Home: React.FC = () => {
           </div>
         </div>
         <div className="animated-ball-container">
-          <div className="red-tennis-ball"></div>
+          <img 
+            src="/red-tennis-ball.png" 
+            alt="Red Tennis Ball" 
+            className="red-tennis-ball-img"
+          />
         </div>
         <div className="hero-overlay"></div>
       </section>
