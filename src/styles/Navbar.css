@@ -42,7 +42,7 @@
 }
 
 .nav-cta {
-  background-color: var(--primary-color);
+  background: linear-gradient(45deg, var(--color-orange), var(--color-pink));
   color: var(--text-white);
   padding: 10px 25px;
   font-weight: 700;
@@ -51,8 +51,9 @@
 }
 
 .nav-cta:hover {
-  background-color: #e65a00;
+  background: linear-gradient(45deg, var(--color-pink), var(--color-purple));
   transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(251, 86, 7, 0.4);
 }
 
 @media (max-width: 768px) {

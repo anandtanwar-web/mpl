@@ -56,9 +56,9 @@
   cursor: pointer;
 }
 
-.icon:hover {
-  background-color: var(--primary-color);
-}
+.icon:nth-child(1):hover { background-color: var(--color-blue); }
+.icon:nth-child(2):hover { background-color: var(--color-pink); }
+.icon:nth-child(3):hover { background-color: var(--color-purple); }
 
 .footer-bottom {
   text-align: center;

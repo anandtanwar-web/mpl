@@ -1,7 +1,13 @@
 :root {
-  --primary-color: #FF6B00; /* Bold Orange */
-  --ball-red: #D90429; /* Vibrant Red for Tennis Ball */
-  --secondary-color: #121212; /* Deep Black */
+  --color-yellow: #FFBE0B;
+  --color-orange: #FB5607;
+  --color-pink: #FF006E;
+  --color-purple: #8338EC;
+  --color-blue: #3A86FF;
+  
+  --primary-color: var(--color-orange); 
+  --ball-red: #D90429;
+  --secondary-color: #121212;
   --text-white: #FFFFFF;
   --text-gray: #B0B0B0;
   --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
