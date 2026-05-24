@@ -25,15 +25,20 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) => {
     }
   };
 
+  const handleHomeClick = () => {
+    setCurrentPage('home');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <nav className="navbar">
       <div className="container nav-container">
-        <div className="logo" onClick={() => setCurrentPage('home')}>
+        <div className="logo" onClick={handleHomeClick}>
           MPL<span className="dot">.</span>
         </div>
         <ul className="nav-links">
           <li>
-            <button onClick={() => setCurrentPage('home')} className="nav-link-btn">
+            <button onClick={handleHomeClick} className="nav-link-btn">
               Home
             </button>
           </li>
