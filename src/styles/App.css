@@ -16,6 +16,11 @@
 body {
   font-family: var(--font-main);
   background-color: var(--secondary-color);
+  background-image: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)), url('/red-tennis-ball.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   color: var(--text-white);
   line-height: 1.6;
 }
