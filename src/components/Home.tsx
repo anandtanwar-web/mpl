@@ -35,23 +35,9 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
             <h2>About <span className="highlight">MPL</span></h2>
             <div className="underline"></div>
           </div>
-          <div className="about-grid">
-            <div className="about-text">
-              <p>The Manchester Premier League (MPL) is redefining amateur cricket. Our franchise-based model brings professional organization to the accessible format of tennis ball cricket.</p>
-              <p>With colored kits, professional umpires, and digital scoring, we provide a platform for local talent to shine under the spotlight.</p>
-            </div>
-            <div className="about-features">
-              <div className="feature">
-                <div className="feature-icon">🏏</div>
-                <h3>T20 Format</h3>
-                <p>Fast-paced, explosive matches designed for maximum excitement.</p>
-              </div>
-              <div className="feature">
-                <div className="feature-icon">🏆</div>
-                <h3>Franchise Model</h3>
-                <p>8 professional franchises competing for the ultimate glory.</p>
-              </div>
-            </div>
+          <div className="about-content">
+            <p>The Manchester Premier League (MPL) is redefining amateur cricket. Our franchise-based model brings professional organization to the accessible format of tennis ball cricket.</p>
+            <p>With colored kits, professional umpires, and digital scoring, we provide a platform for local talent to shine under the spotlight. MPL 2026 is a T20 tournament designed for maximum excitement and professional standards.</p>
           </div>
         </div>
       </section>
