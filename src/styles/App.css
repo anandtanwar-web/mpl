@@ -36,6 +36,53 @@ h1, h2, h3 {
   letter-spacing: 1px;
 }
 
+.btn {
+  padding: 12px 30px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+  position: relative;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary {
+  background: var(--color-orange);
+  color: white;
+  box-shadow: 0 4px 0 #b33e05; /* 3D effect shadow */
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #b33e05;
+}
+
+.btn-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #b33e05;
+}
+
+.btn-secondary {
+  background: #333;
+  color: white;
+  box-shadow: 0 4px 0 #1a1a1a;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #1a1a1a;
+}
+
+.btn-secondary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #1a1a1a;
+}
+
 .nav-link-btn {
   background: none;
   border: none;

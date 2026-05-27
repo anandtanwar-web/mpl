@@ -44,18 +44,37 @@
 }
 
 .hero-btns .btn-primary {
-  background: linear-gradient(45deg, var(--color-orange), var(--color-pink));
+  background: linear-gradient(to bottom, var(--color-orange), #e64a19);
   border: none;
+  box-shadow: 0 6px 0 #bf360c, 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.hero-btns .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #bf360c, 0 15px 25px rgba(0,0,0,0.4);
+}
+
+.hero-btns .btn-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #bf360c;
 }
 
 .hero-btns .btn-secondary {
   border: 2px solid var(--color-blue);
   color: var(--color-blue);
+  box-shadow: 0 4px 0 var(--color-blue);
 }
 
 .hero-btns .btn-secondary:hover {
   background-color: var(--color-blue);
   color: var(--text-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #1a56cc;
+}
+
+.hero-btns .btn-secondary:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #1a56cc;
 }
 
 /* About Styles */
@@ -114,13 +133,21 @@
 .btn-large {
   padding: 20px 60px;
   font-size: 1.2rem;
-  background-color: var(--text-white);
+  background: linear-gradient(to bottom, #fff, #eee);
   color: var(--color-purple);
+  box-shadow: 0 8px 0 #ccc, 0 15px 30px rgba(0,0,0,0.3);
 }
 
 .btn-large:hover {
-  background-color: var(--color-yellow);
+  background: linear-gradient(to bottom, var(--color-yellow), #fdd835);
   color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 #fbc02d;
+}
+
+.btn-large:active {
+  transform: translateY(6px);
+  box-shadow: 0 2px 0 #fbc02d;
 }
 
 /* Animations */

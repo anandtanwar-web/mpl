@@ -157,3 +157,64 @@ textarea {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+.form-btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+/* 3D Button Effects for Registration */
+.registration-page .btn-primary {
+  background: linear-gradient(to bottom, var(--color-blue), #2a75ff);
+  box-shadow: 0 6px 0 #1a56cc, 0 10px 20px rgba(0,0,0,0.3);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.registration-page .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #1a56cc, 0 15px 25px rgba(0,0,0,0.4);
+}
+
+.registration-page .btn-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #1a56cc;
+}
+
+.registration-page .btn-secondary {
+  background: linear-gradient(to bottom, #444, #222);
+  box-shadow: 0 6px 0 #111, 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.registration-page .btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #111;
+}
+
+.registration-page .btn-secondary:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #111;
+}
+
+.status-message {
+  padding: 15px;
+  border-radius: 6px;
+  margin-top: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.status-message.loading { background-color: rgba(255, 107, 0, 0.1); color: var(--primary-color); }
+.status-message.error { background-color: rgba(217, 4, 41, 0.1); color: #d90429; }
+.status-message.success { background-color: rgba(40, 167, 69, 0.1); color: #28a745; }
+
+.success-step {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.success-icon {
+  font-size: 5rem;
+  margin-bottom: 20px;
+}
