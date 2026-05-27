@@ -64,12 +64,21 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
             <div className="underline"></div>
           </div>
           <div className="franchise-grid">
-            {[1, 2, 3, 4, 5, 6, 7, 8].map((id) => (
-              <div key={id} className="franchise-card">
+            {[
+              { id: 1, name: "Manchester Strikers", region: "North Manchester" },
+              { id: 2, name: "Manchester Royals", region: "South Manchester" },
+              { id: 3, name: "Manchester Titans", region: "East Manchester" },
+              { id: 4, name: "Manchester Gladiators", region: "West Manchester" },
+              { id: 5, name: "Manchester Challengers", region: "City Centre" },
+              { id: 6, name: "Manchester Mavericks", region: "Greater Manchester" },
+              { id: 7, name: "Manchester Trailblazers", region: "Salford" },
+              { id: 8, name: "Manchester Warriors", region: "Trafford" }
+            ].map((team) => (
+              <div key={team.id} className="franchise-card">
                 <div className="card-inner">
-                  <div className="franchise-logo">F{id}</div>
-                  <h3>Team {id}</h3>
-                  <p>Manchester Region</p>
+                  <div className="franchise-logo">{team.name.split(' ')[1][0]}</div>
+                  <h3>{team.name}</h3>
+                  <p>{team.region}</p>
                 </div>
               </div>
             ))}
