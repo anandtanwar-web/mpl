@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Home.css';
 
-interface HomeProps {
-  setCurrentPage: (page: string) => void;
-}
+const Home: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
+  useEffect(() => {
+    // Handle hash scrolling on load or navigation
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location]);
+
   return (
     <div className="home-page">
       {/* Hero Section */}
@@ -17,13 +30,13 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
             <div className="hero-btns fade-in-delay">
               <button 
                 className="btn btn-primary" 
-                onClick={() => setCurrentPage('registration')}
+                onClick={() => navigate('/registration')}
               >
                 Join the League
               </button>
               <button 
                 className="btn btn-secondary"
-                onClick={() => setCurrentPage('schedule')}
+                onClick={() => navigate('/schedule')}
               >
                 View Schedule
               </button>
@@ -98,7 +111,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
             <p>Registration for the 2026 season is now open. Don't miss your chance to be part of the legacy.</p>
             <button 
               className="btn btn-primary btn-large" 
-              onClick={() => setCurrentPage('registration')}
+              onClick={() => navigate('/registration')}
             >
               Register Now
             </button>

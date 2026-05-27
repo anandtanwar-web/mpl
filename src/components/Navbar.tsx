@@ -1,33 +1,30 @@
 import React from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 
-interface NavbarProps {
-  currentPage: string;
-  setCurrentPage: (page: string) => void;
-}
+const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) => {
   const handleNavClick = (sectionId: string) => {
-    if (currentPage !== 'home') {
-      setCurrentPage('home');
-      // Give a tiny delay for the Home component to mount before scrolling
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+    if (location.pathname !== '/') {
+      navigate('/#' + sectionId);
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', `/#${sectionId}`);
       }
     }
   };
 
   const handleHomeClick = () => {
-    setCurrentPage('home');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (location.pathname === '/' && !location.hash) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        navigate('/');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (
@@ -53,17 +50,17 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) => {
             </button>
           </li>
           <li>
-            <button onClick={() => setCurrentPage('schedule')} className="nav-link-btn">
+            <Link to="/schedule" className="nav-link-btn">
               Schedule
-            </button>
+            </Link>
           </li>
           <li>
-            <button 
-              onClick={() => setCurrentPage('registration')} 
-              className={`nav-link-btn highlight-link ${currentPage === 'registration' ? 'active' : ''}`}
+            <Link 
+              to="/registration" 
+              className={`nav-link-btn highlight-link ${location.pathname === '/registration' ? 'active' : ''}`}
             >
               Register
-            </button>
+            </Link>
           </li>
         </ul>
       </div>

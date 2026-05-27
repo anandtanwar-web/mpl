@@ -1,32 +1,30 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../styles/Footer.css';
 
-interface FooterProps {
-  currentPage: string;
-  setCurrentPage: (page: string) => void;
-}
+const Footer: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-const Footer: React.FC<FooterProps> = ({ currentPage, setCurrentPage }) => {
   const handleNavClick = (sectionId: string) => {
-    if (currentPage !== 'home') {
-      setCurrentPage('home');
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+    if (location.pathname !== '/') {
+      navigate('/#' + sectionId);
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
+        window.history.pushState(null, '', `/#${sectionId}`);
       }
     }
   };
 
   const handleHomeClick = () => {
-    setCurrentPage('home');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (location.pathname === '/' && !location.hash) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      navigate('/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   return (

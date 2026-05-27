@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Registration from './components/Registration';
@@ -7,29 +7,22 @@ import Footer from './components/Footer';
 import './styles/App.css';
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('home');
-
-  const renderPage = () => {
-    switch(currentPage) {
-      case 'home':
-        return <Home setCurrentPage={setCurrentPage} />;
-      case 'registration':
-        return <Registration />;
-      case 'schedule':
-        return <Schedule />;
-      default:
-        return <Home setCurrentPage={setCurrentPage} />;
-    }
-  };
-
   return (
-    <div className="App">
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      <main>
-        {renderPage()}
-      </main>
-      <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/registration" element={<Registration />} />
+            <Route path="/schedule" element={<Schedule />} />
+            {/* Fallback to Home */}
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
