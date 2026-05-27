@@ -28,15 +28,21 @@
   list-style: none;
 }
 
-.footer-links li {
-  margin-bottom: 10px;
-}
-
-.footer-links a {
+.footer-link-btn {
+  background: none;
+  border: none;
   color: var(--text-gray);
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  display: block;
+  text-align: left;
 }
 
-.footer-links a:hover {
+.footer-link-btn:hover {
   color: var(--text-white);
 }
 

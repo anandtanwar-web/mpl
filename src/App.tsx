@@ -14,7 +14,7 @@ function App() {
       <main>
         {currentPage === 'home' ? <Home setCurrentPage={setCurrentPage} /> : <Registration />}
       </main>
-      <Footer />
+      <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </div>
   );
 }
