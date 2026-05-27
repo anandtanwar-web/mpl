@@ -65,20 +65,19 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
           </div>
           <div className="franchise-grid">
             {[
-              { id: 1, name: "Manchester Strikers", region: "North Manchester" },
-              { id: 2, name: "Manchester Royals", region: "South Manchester" },
-              { id: 3, name: "Manchester Titans", region: "East Manchester" },
-              { id: 4, name: "Manchester Gladiators", region: "West Manchester" },
-              { id: 5, name: "Manchester Challengers", region: "City Centre" },
-              { id: 6, name: "Manchester Mavericks", region: "Greater Manchester" },
-              { id: 7, name: "Manchester Trailblazers", region: "Salford" },
-              { id: 8, name: "Manchester Warriors", region: "Trafford" }
+              { id: 1, name: "Manchester Strikers" },
+              { id: 2, name: "Manchester Royals" },
+              { id: 3, name: "Manchester Titans" },
+              { id: 4, name: "Manchester Gladiators" },
+              { id: 5, name: "Manchester Challengers" },
+              { id: 6, name: "Manchester Mavericks" },
+              { id: 7, name: "Manchester Trailblazers" },
+              { id: 8, name: "Manchester Warriors" }
             ].map((team) => (
               <div key={team.id} className="franchise-card">
                 <div className="card-inner">
                   <div className="franchise-logo">{team.name.split(' ')[1][0]}</div>
                   <h3>{team.name}</h3>
-                  <p>{team.region}</p>
                 </div>
               </div>
             ))}
