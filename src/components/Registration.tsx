@@ -37,6 +37,10 @@ const Registration = () => {
     } else {
         setFormData(prev => ({ ...prev, [name]: value }));
     }
+    // Clear error message when user starts typing
+    if (status.type === 'error') {
+        setStatus({ type: '', message: '' });
+    }
   };
 
   const handleCheckboxListChange = (skill: string) => {
@@ -51,17 +55,48 @@ const Registration = () => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFormData(prev => ({ ...prev, photo: e.target.files![0] }));
+      if (status.type === 'error') setStatus({ type: '', message: '' });
     }
   };
 
-  const nextStep = () => setStep(prev => prev + 1);
-  const prevStep = () => setStep(prev => prev - 1);
+  const validateStep = (currentStep: number) => {
+    if (currentStep === 1) {
+      if (!formData.fullName || !formData.dob || !formData.email || !formData.city || !formData.phone || !formData.availability) {
+        return "Please fill all mandatory fields in Step 1.";
+      }
+    } else if (currentStep === 2) {
+      if (!formData.primaryRole || !formData.battingStyle || !formData.cricHeroesLink) {
+        return "Please fill all mandatory fields in Step 2.";
+      }
+    } else if (currentStep === 3) {
+      if (!formData.medicalConditions || !formData.currentInjuries || !formData.photo || !formData.auction || !formData.codeOfConduct || !formData.mediaConsent || !formData.privacyConsent) {
+        return "Please fill all mandatory fields and provide consents in Step 3.";
+      }
+    }
+    return null;
+  };
+
+  const nextStep = () => {
+    const error = validateStep(step);
+    if (error) {
+      setStatus({ type: 'error', message: error });
+      return;
+    }
+    setStatus({ type: '', message: '' });
+    setStep(prev => prev + 1);
+  };
+
+  const prevStep = () => {
+    setStatus({ type: '', message: '' });
+    setStep(prev => prev - 1);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.codeOfConduct || !formData.mediaConsent || !formData.privacyConsent) {
-        setStatus({ type: 'error', message: 'Please provide all required consents.' });
-        return;
+    const error = validateStep(3);
+    if (error) {
+      setStatus({ type: 'error', message: error });
+      return;
     }
 
     setStatus({ type: 'loading', message: 'Submitting your registration...' });
@@ -77,8 +112,6 @@ const Registration = () => {
     }
 
     try {
-      // In a real scenario with files, you'd convert to Base64 or use FormData
-      // For this implementation, we send text data
       const submissionData = {
         ...formData,
         skills: formData.skills.join(', '),
@@ -143,10 +176,11 @@ const Registration = () => {
               <div className="form-group">
                 <label>Are you available for the full duration of MPL 2026? *</label>
                 <div className="radio-group">
-                  <label><input type="radio" name="availability" value="Yes" onChange={handleChange} required /> Yes</label>
-                  <label><input type="radio" name="availability" value="No" onChange={handleChange} /> No</label>
+                  <label><input type="radio" name="availability" value="Yes" checked={formData.availability === 'Yes'} onChange={handleChange} required /> Yes</label>
+                  <label><input type="radio" name="availability" value="No" checked={formData.availability === 'No'} onChange={handleChange} /> No</label>
                 </div>
               </div>
+              {status.message && step === 1 && <div className={`status-message ${status.type}`}>{status.message}</div>}
               <button type="button" className="btn btn-primary" onClick={nextStep}>Next: Cricket Profile</button>
             </div>
           )}
@@ -211,6 +245,8 @@ const Registration = () => {
                 <input type="url" name="cricHeroesLink" value={formData.cricHeroesLink} onChange={handleChange} required placeholder="https://cricheroes.in/..." />
               </div>
 
+              {status.message && step === 2 && <div className={`status-message ${status.type}`}>{status.message}</div>}
+
               <div className="form-btns">
                 <button type="button" className="btn btn-secondary" onClick={prevStep}>Back</button>
                 <button type="button" className="btn btn-primary" onClick={nextStep}>Next: Health & Consent</button>
@@ -256,6 +292,7 @@ const Registration = () => {
               <div className="form-group">
                 <label>Upload passport size photo *</label>
                 <input type="file" accept="image/*" onChange={handleFileChange} required />
+                {formData.photo && <p className="file-name">Selected: {formData.photo.name}</p>}
               </div>
 
               <div className="form-group">
@@ -287,7 +324,7 @@ const Registration = () => {
                 </label>
               </div>
 
-              {status.message && <div className={`status-message ${status.type}`}>{status.message}</div>}
+              {status.message && step === 3 && <div className={`status-message ${status.type}`}>{status.message}</div>}
 
               <div className="form-btns">
                 <button type="button" className="btn btn-secondary" onClick={prevStep}>Back</button>
