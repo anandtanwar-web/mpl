@@ -113,9 +113,9 @@ const Registration = () => {
 
     setStatus({ type: 'loading', message: 'Submitting your registration and uploading photo...' });
 
-    const APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+    const APPS_SCRIPT_URL = import.meta.env.VITE_APPS_SCRIPT_URL;
 
-    if (APPS_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'YOUR_COPIED_URL_HERE') {
         setStatus({ 
             type: 'error', 
             message: 'Registration system is being configured. Please set up the Google Apps Script URL.' 
