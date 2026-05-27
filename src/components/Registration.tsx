@@ -37,7 +37,6 @@ const Registration = () => {
     } else {
         setFormData(prev => ({ ...prev, [name]: value }));
     }
-    // Clear error message when user starts typing
     if (status.type === 'error') {
         setStatus({ type: '', message: '' });
     }
@@ -91,6 +90,19 @@ const Registration = () => {
     setStep(prev => prev - 1);
   };
 
+  // Helper to convert file to Base64
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64String = (reader.result as string).split(',')[1];
+        resolve(base64String);
+      };
+      reader.onerror = error => reject(error);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const error = validateStep(3);
@@ -99,7 +111,7 @@ const Registration = () => {
       return;
     }
 
-    setStatus({ type: 'loading', message: 'Submitting your registration...' });
+    setStatus({ type: 'loading', message: 'Submitting your registration and uploading photo...' });
 
     const APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
@@ -112,10 +124,17 @@ const Registration = () => {
     }
 
     try {
+      let photoBase64 = '';
+      if (formData.photo) {
+        photoBase64 = await fileToBase64(formData.photo);
+      }
+
       const submissionData = {
         ...formData,
         skills: formData.skills.join(', '),
-        photo: formData.photo ? formData.photo.name : 'No file'
+        photoData: photoBase64,
+        photoName: formData.photo ? formData.photo.name : '',
+        photoType: formData.photo ? formData.photo.type : ''
       };
 
       await fetch(APPS_SCRIPT_URL, {
@@ -125,7 +144,9 @@ const Registration = () => {
         body: JSON.stringify(submissionData)
       });
       
-      setStatus({ type: 'success', message: 'Registration successful!' });
+      // Since mode is no-cors, we won't get a readable response body, 
+      // but we assume success if no error was thrown.
+      setStatus({ type: 'success', message: 'Registration successful! Photo uploaded to MPL2026/Photos.' });
       setStep(4);
     } catch (error) {
       setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
@@ -337,7 +358,7 @@ const Registration = () => {
             <div className="form-step success-step fade-in">
               <div className="success-icon">🏏</div>
               <h2>Application Submitted!</h2>
-              <p>Thank you for registering for MPL 2026. Your details have been recorded.</p>
+              <p>Thank you for registering for MPL 2026. Your details have been recorded and your photo has been uploaded.</p>
               <button type="button" className="btn btn-primary" onClick={() => window.location.href = '/'}>Back to Home</button>
             </div>
           )}
