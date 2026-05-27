@@ -43,7 +43,7 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
             <div className="about-features">
               <div className="feature">
                 <div className="feature-icon">🏏</div>
-                <h3>T10 Format</h3>
+                <h3>T20 Format</h3>
                 <p>Fast-paced, explosive matches designed for maximum excitement.</p>
               </div>
               <div className="feature">
