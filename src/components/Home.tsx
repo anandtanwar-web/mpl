@@ -21,7 +21,12 @@ const Home: React.FC<HomeProps> = ({ setCurrentPage }) => {
               >
                 Join the League
               </button>
-              <button className="btn btn-secondary">View Schedule</button>
+              <button 
+                className="btn btn-secondary"
+                onClick={() => setCurrentPage('schedule')}
+              >
+                View Schedule
+              </button>
             </div>
           </div>
         </div>

@@ -53,6 +53,11 @@ const Navbar: React.FC<NavbarProps> = ({ currentPage, setCurrentPage }) => {
             </button>
           </li>
           <li>
+            <button onClick={() => setCurrentPage('schedule')} className="nav-link-btn">
+              Schedule
+            </button>
+          </li>
+          <li>
             <button 
               onClick={() => setCurrentPage('registration')} 
               className={`nav-link-btn highlight-link ${currentPage === 'registration' ? 'active' : ''}`}
