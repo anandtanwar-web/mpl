@@ -89,48 +89,71 @@ input:focus, select:focus, textarea:focus {
   background-color: rgba(255, 255, 255, 0.08);
 }
 
-.checkbox-group {
+.radio-group {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 30px;
+  gap: 20px;
+  margin-top: 10px;
 }
 
-.checkbox-group input {
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-white);
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  background-color: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--text-gray);
+  transition: color 0.3s ease;
+}
+
+.checkbox-item:hover {
+  color: var(--text-white);
+}
+
+.checkbox-item input {
   width: auto;
 }
 
-.form-btns {
+.consent-section {
+  background-color: rgba(131, 56, 236, 0.05);
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 30px;
   display: flex;
-  justify-content: flex-end;
-  gap: 15px;
-  margin-top: 40px;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid rgba(131, 56, 236, 0.2);
 }
 
-.status-message {
-  padding: 15px;
-  border-radius: 6px;
-  margin-top: 20px;
-  font-weight: 600;
-  text-align: center;
+.consent-section .checkbox-item {
+  color: var(--text-white);
+  font-weight: 500;
 }
 
-.status-message.loading { background-color: rgba(255, 107, 0, 0.1); color: var(--primary-color); }
-.status-message.error { background-color: rgba(217, 4, 41, 0.1); color: #d90429; }
-.status-message.success { background-color: rgba(40, 167, 69, 0.1); color: #28a745; }
-
-.success-step {
-  text-align: center;
-  padding: 40px 0;
-}
-
-.success-icon {
-  font-size: 5rem;
-  margin-bottom: 20px;
+textarea {
+  min-height: 100px;
+  resize: vertical;
 }
 
 @media (max-width: 600px) {
-  .form-row {
-    grid-template-columns: 1fr;
+  .checkbox-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
