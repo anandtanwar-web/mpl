@@ -5,11 +5,10 @@ const Registration = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     fullName: '',
-    dob: '',
     email: '',
-    city: '',
     phone: '',
     availability: '',
+    availabilityDetails: '',
     primaryRole: '',
     battingStyle: '',
     bowlingStyle: '',
@@ -60,8 +59,11 @@ const Registration = () => {
 
   const validateStep = (currentStep: number) => {
     if (currentStep === 1) {
-      if (!formData.fullName || !formData.dob || !formData.email || !formData.city || !formData.phone || !formData.availability) {
+      if (!formData.fullName || !formData.email || !formData.phone || !formData.availability) {
         return "Please fill all mandatory fields in Step 1.";
+      }
+      if (formData.availability === 'No' && !formData.availabilityDetails) {
+        return "Please provide details on your availability.";
       }
     } else if (currentStep === 2) {
       if (!formData.primaryRole || !formData.battingStyle || !formData.cricHeroesLink) {
@@ -176,18 +178,8 @@ const Registration = () => {
               </div>
               <div className="form-row">
                 <div className="form-group">
-                  <label>Date of Birth *</label>
-                  <input type="date" name="dob" value={formData.dob} onChange={handleChange} required />
-                </div>
-                <div className="form-group">
                   <label>Email ID *</label>
                   <input type="email" name="email" value={formData.email} onChange={handleChange} required />
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label>City *</label>
-                  <input type="text" name="city" value={formData.city} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
                   <label>Phone Number *</label>
@@ -201,6 +193,18 @@ const Registration = () => {
                   <label><input type="radio" name="availability" value="No" checked={formData.availability === 'No'} onChange={handleChange} /> No</label>
                 </div>
               </div>
+              {formData.availability === 'No' && (
+                <div className="form-group fade-in">
+                  <label>Please provide details on which dates you are not available *</label>
+                  <textarea 
+                    name="availabilityDetails" 
+                    value={formData.availabilityDetails} 
+                    onChange={handleChange} 
+                    placeholder="e.g. Not available on June 15-17 due to personal commitments..."
+                    required
+                  />
+                </div>
+              )}
               {status.message && step === 1 && <div className={`status-message ${status.type}`}>{status.message}</div>}
               <button type="button" className="btn btn-primary" onClick={nextStep}>Next: Cricket Profile</button>
             </div>
