@@ -416,7 +416,7 @@ const Registration = () => {
                   </div>
                   <div className="bank-info">
                     <span className="info-label">Amount:</span>
-                    <span className="info-value highlight">£50.00</span>
+                    <span className="info-value highlight">£21.00</span>
                   </div>
                 </div>
               </div>
