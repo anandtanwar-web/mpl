@@ -53,7 +53,13 @@ const Registration = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFormData(prev => ({ ...prev, photo: e.target.files![0] }));
+      const file = e.target.files[0];
+      if (file.size > 10 * 1024 * 1024) {
+        setStatus({ type: 'error', message: 'File size exceeds 10MB. Please upload a smaller file.' });
+        e.target.value = ''; // Reset input
+        return;
+      }
+      setFormData(prev => ({ ...prev, photo: file }));
       if (status.type === 'error') setStatus({ type: '', message: '' });
     }
   };
