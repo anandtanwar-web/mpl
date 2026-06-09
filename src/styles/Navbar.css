@@ -27,6 +27,13 @@
   display: flex !important;
   align-items: center !important;
   flex-shrink: 0;
+  gap: 12px;
+}
+
+.sanskruti-logo {
+  height: 45px;
+  width: auto;
+  border-radius: 4px;
 }
 
 .logo .dot {

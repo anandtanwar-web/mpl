@@ -19,6 +19,13 @@
   transform: scale(1.5);
 }
 
+.footer-logo {
+  height: 60px;
+  width: auto;
+  margin-bottom: 15px;
+  border-radius: 4px;
+}
+
 .footer-links h4, .footer-social h4 {
   margin-bottom: 20px;
   color: var(--primary-color);

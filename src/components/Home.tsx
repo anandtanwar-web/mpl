@@ -55,7 +55,7 @@ const Home: React.FC = () => {
           </div>
           <div className="about-grid">
             <div className="about-text">
-              <p>The Manchester Premier League (MPL) is redefining amateur cricket. Our franchise-based model brings professional organization to the accessible format of tennis ball cricket.</p>
+              <p>The Manchester Premier League (MPL) is redefining amateur cricket. Proudly organized under the banner of <strong>Sanskruti</strong>, our franchise-based model brings professional organization to the accessible format of tennis ball cricket.</p>
               <p>With colored kits, professional umpires, and digital scoring, we provide a platform for local talent to shine under the spotlight.</p>
             </div>
             <div className="about-features">
