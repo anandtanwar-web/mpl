@@ -83,14 +83,14 @@ const Home: React.FC = () => {
           </div>
           <div className="franchise-grid">
             {[
-              { id: 1, name: "Manchester Strikers", logo: "/royals-logo.jpg" },
+              { id: 1, name: "Manchester Strikers", logo: "/strikers-logo.pdf" },
               { id: 2, name: "Manchester Royals", logo: "/royals-logo.jpg" },
-              { id: 3, name: "Manchester Titans", logo: "/royals-logo.jpg" },
-              { id: 4, name: "Manchester Gladiators", logo: "/royals-logo.jpg" },
-              { id: 5, name: "Manchester Challengers", logo: "/royals-logo.jpg" },
-              { id: 6, name: "Manchester Mavericks", logo: "/royals-logo.jpg" },
-              { id: 7, name: "Manchester Trailblazers", logo: "/royals-logo.jpg" },
-              { id: 8, name: "Manchester Warriors", logo: "/royals-logo.jpg" }
+              { id: 3, name: "Manchester Titans", logo: "/titans-logo.jpg" },
+              { id: 4, name: "Manchester Gladiators", logo: "/gladiators-logo.jpg" },
+              { id: 5, name: "Manchester Challengers", logo: "/challengers-logo.jpg" },
+              { id: 6, name: "Manchester Mavericks", logo: "/mavericks-logo.jpg" },
+              { id: 7, name: "Manchester Trailblazers", logo: "/trailblazers-logo.jpg" },
+              { id: 8, name: "Manchester Warriors", logo: "/warriors-logo.jpg" }
             ].map((team) => (
               <div key={team.id} className="franchise-card">
                 <div className="card-inner">
