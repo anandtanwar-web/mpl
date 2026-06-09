@@ -150,6 +150,13 @@
   font-size: 2rem;
   font-weight: 800;
   margin: 0 auto 20px;
+  overflow: hidden;
+}
+
+.team-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .franchise-card:nth-child(5n+1) .franchise-logo { background: var(--color-yellow); color: #000; }
