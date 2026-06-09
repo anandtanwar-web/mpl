@@ -1,9 +1,9 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import Registration from './Registration';
 
 // Mock fetch for duplicate check
-global.fetch = vi.fn();
+vi.stubGlobal('fetch', vi.fn());
 
 describe('Registration Component', () => {
   beforeEach(() => {
@@ -34,7 +34,7 @@ describe('Registration Component', () => {
 
   it('validates duplicate email/phone and prevents moving to Step 2', async () => {
     // Mock API to return exists: true
-    (global.fetch as any).mockResolvedValue({
+    (fetch as any).mockResolvedValue({
       json: () => Promise.resolve({ exists: true }),
     });
 
@@ -54,7 +54,7 @@ describe('Registration Component', () => {
 
   it('navigates to Step 2 when all fields are valid and not a duplicate', async () => {
     // Mock API to return exists: false
-    (global.fetch as any).mockResolvedValue({
+    (fetch as any).mockResolvedValue({
       json: () => Promise.resolve({ exists: false }),
     });
 
