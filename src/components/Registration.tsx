@@ -23,7 +23,8 @@ const Registration = () => {
     codeOfConduct: false,
     mediaConsent: false,
     privacyConsent: false,
-    jerseyName: ''
+    jerseyName: '',
+    transactionId: ''
   });
 
   const [status, setStatus] = useState({ type: '', message: '' });
@@ -73,6 +74,10 @@ const Registration = () => {
       if (!formData.medicalConditions || !formData.currentInjuries || !formData.photo || !formData.auction || !formData.codeOfConduct || !formData.mediaConsent || !formData.privacyConsent) {
         return "Please fill all mandatory fields and provide consents in Step 3.";
       }
+    } else if (currentStep === 4) {
+      if (!formData.transactionId) {
+        return "Please provide the Transaction Reference ID.";
+      }
     }
     return null;
   };
@@ -107,7 +112,7 @@ const Registration = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const error = validateStep(3);
+    const error = validateStep(4);
     if (error) {
       setStatus({ type: 'error', message: error });
       return;
@@ -148,8 +153,8 @@ const Registration = () => {
       
       // Since mode is no-cors, we won't get a readable response body, 
       // but we assume success if no error was thrown.
-      setStatus({ type: 'success', message: 'Registration successful! Photo uploaded to MPL2026/Photos.' });
-      setStep(4);
+      setStatus({ type: 'success', message: 'Registration submitted! Status: Pending Verification.' });
+      setStep(5);
     } catch (error) {
       setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
     }
@@ -162,7 +167,7 @@ const Registration = () => {
           <h1>Player <span className="highlight">Registration</span></h1>
           <p>MPL Cricket Tournament 2026</p>
           <div className="progress-bar">
-            {[1, 2, 3].map(i => (
+            {[1, 2, 3, 4].map(i => (
               <div key={i} className={`progress-step ${step >= i ? 'active' : ''}`}></div>
             ))}
           </div>
@@ -353,16 +358,65 @@ const Registration = () => {
 
               <div className="form-btns">
                 <button type="button" className="btn btn-secondary" onClick={prevStep}>Back</button>
-                <button type="submit" className="btn btn-primary">Submit Registration</button>
+                <button type="button" className="btn btn-primary" onClick={nextStep}>Next: Payment</button>
               </div>
             </div>
           )}
 
           {step === 4 && (
+            <div className="form-step fade-in">
+              <h2>Step 4: Payment Verification</h2>
+              
+              <div className="payment-details">
+                <p className="payment-instruction">Please transfer the registration fee to the account below and provide the transaction reference ID.</p>
+                <div className="bank-card">
+                  <div className="bank-info">
+                    <span className="info-label">Account Name:</span>
+                    <span className="info-value">Mohan Madana</span>
+                  </div>
+                  <div className="bank-info">
+                    <span className="info-label">Sort Code:</span>
+                    <span className="info-value">60-84-07</span>
+                  </div>
+                  <div className="bank-info">
+                    <span className="info-label">Account Number:</span>
+                    <span className="info-value">61116690</span>
+                  </div>
+                  <div className="bank-info">
+                    <span className="info-label">Amount:</span>
+                    <span className="info-value highlight">£50.00</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label>Transaction Reference ID *</label>
+                <input 
+                  type="text" 
+                  name="transactionId" 
+                  value={formData.transactionId} 
+                  onChange={handleChange} 
+                  required 
+                  placeholder="Enter the reference ID from your bank transfer" 
+                />
+              </div>
+
+              {status.message && step === 4 && <div className={`status-message ${status.type}`}>{status.message}</div>}
+
+              <div className="form-btns">
+                <button type="button" className="btn btn-secondary" onClick={prevStep}>Back</button>
+                <button type="submit" className="btn btn-primary">Submit Registration</button>
+              </div>
+            </div>
+          )}
+
+          {step === 5 && (
             <div className="form-step success-step fade-in">
               <div className="success-icon">🏏</div>
-              <h2>Application Submitted!</h2>
-              <p>Thank you for registering for MPL 2026. Your details have been recorded and your photo has been uploaded.</p>
+              <h2>Registration Received!</h2>
+              <p className="status-badge pending">Pending Verification</p>
+              <p>Thank you for registering for MPL 2026. Your details and transaction ID have been recorded.</p>
+              <p className="info-text">Our team will cross-check the receipt against our bank statement. You will receive a confirmation once verified.</p>
               <button type="button" className="btn btn-primary" onClick={() => window.location.href = '/'}>Back to Home</button>
             </div>
           )}
