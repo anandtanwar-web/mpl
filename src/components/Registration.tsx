@@ -208,17 +208,17 @@ const Registration = () => {
             <div className="form-step fade-in">
               <h2>Step 1: Personal Profile</h2>
               <div className="form-group">
-                <label>Full Name *</label>
-                <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} required />
+                <label htmlFor="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} required />
               </div>
               <div className="form-row">
                 <div className="form-group">
-                  <label>Email ID *</label>
-                  <input type="email" name="email" value={formData.email} onChange={handleChange} required />
+                  <label htmlFor="email">Email ID *</label>
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
                 </div>
                 <div className="form-group">
-                  <label>Phone Number *</label>
-                  <input type="tel" name="phone" value={formData.phone} onChange={handleChange} required />
+                  <label htmlFor="phone">Phone Number *</label>
+                  <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
                 </div>
               </div>
               <div className="form-group">
@@ -230,8 +230,9 @@ const Registration = () => {
               </div>
               {formData.availability === 'No' && (
                 <div className="form-group fade-in">
-                  <label>Please provide details on which dates you are not available *</label>
+                  <label htmlFor="availabilityDetails">Please provide details on which dates you are not available *</label>
                   <textarea 
+                    id="availabilityDetails"
                     name="availabilityDetails" 
                     value={formData.availabilityDetails} 
                     onChange={handleChange} 
