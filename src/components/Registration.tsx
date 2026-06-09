@@ -251,8 +251,8 @@ const Registration = () => {
               <h2>Step 2: Cricket Profile</h2>
               <div className="form-row">
                 <div className="form-group">
-                  <label>Primary Role *</label>
-                  <select name="primaryRole" value={formData.primaryRole} onChange={handleChange} required>
+                  <label htmlFor="primaryRole">Primary Role *</label>
+                  <select id="primaryRole" name="primaryRole" value={formData.primaryRole} onChange={handleChange} required>
                     <option value="">Select Role</option>
                     <option value="Batsman">Batsman</option>
                     <option value="Bowler">Bowler</option>
@@ -261,8 +261,8 @@ const Registration = () => {
                   </select>
                 </div>
                 <div className="form-group">
-                  <label>Batting Style *</label>
-                  <select name="battingStyle" value={formData.battingStyle} onChange={handleChange} required>
+                  <label htmlFor="battingStyle">Batting Style *</label>
+                  <select id="battingStyle" name="battingStyle" value={formData.battingStyle} onChange={handleChange} required>
                     <option value="">Select Style</option>
                     <option value="Left hand">Left hand</option>
                     <option value="Right hand">Right hand</option>
@@ -271,8 +271,8 @@ const Registration = () => {
               </div>
 
               <div className="form-group">
-                <label>Bowling Style (if applicable)</label>
-                <select name="bowlingStyle" value={formData.bowlingStyle} onChange={handleChange}>
+                <label htmlFor="bowlingStyle">Bowling Style (if applicable)</label>
+                <select id="bowlingStyle" name="bowlingStyle" value={formData.bowlingStyle} onChange={handleChange}>
                   <option value="">Select Style</option>
                   <option value="Right-arm fast">Right-arm fast</option>
                   <option value="Right-arm medium">Right-arm medium</option>
@@ -302,8 +302,8 @@ const Registration = () => {
               </div>
 
               <div className="form-group">
-                <label>CricHeroes Profile Link *</label>
-                <input type="url" name="cricHeroesLink" value={formData.cricHeroesLink} onChange={handleChange} required placeholder="https://cricheroes.in/..." />
+                <label htmlFor="cricHeroesLink">CricHeroes Profile Link *</label>
+                <input type="url" id="cricHeroesLink" name="cricHeroesLink" value={formData.cricHeroesLink} onChange={handleChange} required placeholder="https://cricheroes.in/..." />
               </div>
 
               {status.message && step === 2 && <div className={`status-message ${status.type}`}>{status.message}</div>}
@@ -321,16 +321,16 @@ const Registration = () => {
               
               <div className="form-row">
                 <div className="form-group">
-                  <label>Any medical conditions or allergies? *</label>
-                  <select name="medicalConditions" value={formData.medicalConditions} onChange={handleChange} required>
+                  <label htmlFor="medicalConditions">Any medical conditions or allergies? *</label>
+                  <select id="medicalConditions" name="medicalConditions" value={formData.medicalConditions} onChange={handleChange} required>
                     <option value="">Select</option>
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
                   </select>
                 </div>
                 <div className="form-group">
-                  <label>Any current injuries? *</label>
-                  <select name="currentInjuries" value={formData.currentInjuries} onChange={handleChange} required>
+                  <label htmlFor="currentInjuries">Any current injuries? *</label>
+                  <select id="currentInjuries" name="currentInjuries" value={formData.currentInjuries} onChange={handleChange} required>
                     <option value="">Select</option>
                     <option value="No">No</option>
                     <option value="Yes">Yes</option>
@@ -340,8 +340,9 @@ const Registration = () => {
 
               {(formData.medicalConditions === 'Yes' || formData.currentInjuries === 'Yes') && (
                 <div className="form-group">
-                  <label>Health/Injury Details</label>
+                  <label htmlFor="medicalDetails">Health/Injury Details</label>
                   <textarea 
+                    id="medicalDetails"
                     name="medicalDetails" 
                     value={formData.medicalDetails} 
                     onChange={handleChange} 
@@ -351,14 +352,14 @@ const Registration = () => {
               )}
 
               <div className="form-group">
-                <label>Upload passport size photo *</label>
-                <input type="file" accept="image/*" onChange={handleFileChange} required />
+                <label htmlFor="photo">Upload passport size photo *</label>
+                <input type="file" id="photo" accept="image/*" onChange={handleFileChange} required />
                 {formData.photo && <p className="file-name">Selected: {formData.photo.name}</p>}
               </div>
 
               <div className="form-group">
-                <label>Would you like to enter the player auction? *</label>
-                <select name="auction" value={formData.auction} onChange={handleChange} required>
+                <label htmlFor="auction">Would you like to enter the player auction? *</label>
+                <select id="auction" name="auction" value={formData.auction} onChange={handleChange} required>
                   <option value="">Select</option>
                   <option value="Yes">Yes</option>
                   <option value="No">No</option>
@@ -366,21 +367,21 @@ const Registration = () => {
               </div>
 
               <div className="form-group">
-                <label>Nickname / Jersey Name</label>
-                <input type="text" name="jerseyName" value={formData.jerseyName} onChange={handleChange} />
+                <label htmlFor="jerseyName">Nickname / Jersey Name</label>
+                <input type="text" id="jerseyName" name="jerseyName" value={formData.jerseyName} onChange={handleChange} />
               </div>
 
               <div className="consent-section">
                 <label className="checkbox-item">
-                  <input type="checkbox" name="codeOfConduct" checked={formData.codeOfConduct} onChange={handleChange} required />
+                  <input type="checkbox" id="codeOfConduct" name="codeOfConduct" checked={formData.codeOfConduct} onChange={handleChange} required />
                   Code of conduct agreement * (I agree to follow tournament rules)
                 </label>
                 <label className="checkbox-item">
-                  <input type="checkbox" name="mediaConsent" checked={formData.mediaConsent} onChange={handleChange} required />
+                  <input type="checkbox" id="mediaConsent" name="mediaConsent" checked={formData.mediaConsent} onChange={handleChange} required />
                   Consent to use photos/videos *
                 </label>
                 <label className="checkbox-item">
-                  <input type="checkbox" name="privacyConsent" checked={formData.privacyConsent} onChange={handleChange} required />
+                  <input type="checkbox" id="privacyConsent" name="privacyConsent" checked={formData.privacyConsent} onChange={handleChange} required />
                   Data privacy consent *
                 </label>
               </div>
@@ -421,9 +422,10 @@ const Registration = () => {
               </div>
 
               <div className="form-group">
-                <label>Transaction Reference ID *</label>
+                <label htmlFor="transactionId">Transaction Reference ID *</label>
                 <input 
                   type="text" 
+                  id="transactionId"
                   name="transactionId" 
                   value={formData.transactionId} 
                   onChange={handleChange} 
