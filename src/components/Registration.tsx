@@ -82,14 +82,44 @@ const Registration = () => {
     return null;
   };
 
-  const nextStep = () => {
+  const nextStep = async () => {
     const error = validateStep(step);
     if (error) {
       setStatus({ type: 'error', message: error });
       return;
     }
+
+    if (step === 1) {
+      setStatus({ type: 'loading', message: 'Verifying details...' });
+      const isDuplicate = await checkDuplicate(formData.email, formData.phone);
+      if (isDuplicate) {
+        setStatus({ 
+          type: 'error', 
+          message: 'A registration with this email or phone number already exists.' 
+        });
+        return;
+      }
+    }
+
     setStatus({ type: '', message: '' });
     setStep(prev => prev + 1);
+  };
+
+  const checkDuplicate = async (email: string, phone: string) => {
+    const APPS_SCRIPT_URL = import.meta.env.VITE_APPS_SCRIPT_URL;
+    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'YOUR_COPIED_URL_HERE') return false;
+
+    try {
+      const url = `${APPS_SCRIPT_URL}?checkEmail=${encodeURIComponent(email)}&checkPhone=${encodeURIComponent(phone)}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      return data.exists;
+    } catch (error) {
+      console.error("Duplicate check failed:", error);
+      // If the script isn't updated yet or CORS/JSON issues occur, 
+      // we fail open but log the error.
+      return false; 
+    }
   };
 
   const prevStep = () => {
