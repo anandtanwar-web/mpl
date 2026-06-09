@@ -400,7 +400,7 @@ const Registration = () => {
               <h2>Step 4: Payment Verification</h2>
               
               <div className="payment-details">
-                <p className="payment-instruction">Please transfer the registration fee to the account below and provide the transaction reference ID.</p>
+                <p className="payment-instruction">Please transfer the registration fee to the account below. When making the transfer, please include your full name in the reference, then provide the transaction reference ID below.</p>
                 <div className="bank-card">
                   <div className="bank-info">
                     <span className="info-label">Account Name:</span>
