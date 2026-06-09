@@ -83,18 +83,24 @@ const Home: React.FC = () => {
           </div>
           <div className="franchise-grid">
             {[
-              { id: 1, name: "Manchester Strikers" },
-              { id: 2, name: "Manchester Royals" },
-              { id: 3, name: "Manchester Titans" },
-              { id: 4, name: "Manchester Gladiators" },
-              { id: 5, name: "Manchester Challengers" },
-              { id: 6, name: "Manchester Mavericks" },
-              { id: 7, name: "Manchester Trailblazers" },
-              { id: 8, name: "Manchester Warriors" }
+              { id: 1, name: "Manchester Strikers", logo: "/royals-logo.jpg" },
+              { id: 2, name: "Manchester Royals", logo: "/royals-logo.jpg" },
+              { id: 3, name: "Manchester Titans", logo: "/royals-logo.jpg" },
+              { id: 4, name: "Manchester Gladiators", logo: "/royals-logo.jpg" },
+              { id: 5, name: "Manchester Challengers", logo: "/royals-logo.jpg" },
+              { id: 6, name: "Manchester Mavericks", logo: "/royals-logo.jpg" },
+              { id: 7, name: "Manchester Trailblazers", logo: "/royals-logo.jpg" },
+              { id: 8, name: "Manchester Warriors", logo: "/royals-logo.jpg" }
             ].map((team) => (
               <div key={team.id} className="franchise-card">
                 <div className="card-inner">
-                  <div className="franchise-logo">{team.name.split(' ')[1][0]}</div>
+                  <div className="franchise-logo">
+                    {team.logo ? (
+                      <img src={team.logo} alt={team.name} className="team-logo-img" />
+                    ) : (
+                      team.name.split(' ')[1][0]
+                    )}
+                  </div>
                   <h3>{team.name}</h3>
                 </div>
               </div>
