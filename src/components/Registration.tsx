@@ -13,14 +13,11 @@ const Registration = () => {
     primaryRole: '',
     battingStyle: '',
     bowlingStyle: '',
-    isWicketKeeper: false,
     cricHeroesLink: '',
     medicalConditions: '',
     medicalDetails: '',
     photo: null as File | null,
     currentInjuries: '',
-    injuryDetails: '',
-    auction: '',
     codeOfConduct: false,
     mediaConsent: false,
     privacyConsent: false,
@@ -69,7 +66,7 @@ const Registration = () => {
         return "Please fill all mandatory fields in Step 2.";
       }
     } else if (currentStep === 3) {
-      if (!formData.medicalConditions || !formData.currentInjuries || !formData.photo || !formData.auction || !formData.codeOfConduct || !formData.mediaConsent || !formData.privacyConsent) {
+      if (!formData.medicalConditions || !formData.currentInjuries || !formData.photo || !formData.codeOfConduct || !formData.mediaConsent || !formData.privacyConsent) {
         return "Please fill all mandatory fields and provide consents in Step 3.";
       }
     } else if (currentStep === 4) {
@@ -292,13 +289,6 @@ const Registration = () => {
                   <option value="Left-arm orthodox spin">Left-arm orthodox spin</option>
                   <option value="Left-arm unorthodox spin (chinaman)">Left-arm unorthodox spin (chinaman)</option>
                 </select>
-              </div>
-
-              <div className="form-group">
-                <label className="checkbox-item">
-                  <input type="checkbox" name="isWicketKeeper" checked={formData.isWicketKeeper} onChange={handleChange} />
-                  Wicket Keeping
-                </label>
               </div>
 
               <div className="form-group">
