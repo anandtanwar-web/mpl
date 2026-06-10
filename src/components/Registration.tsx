@@ -353,15 +353,6 @@ const Registration = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="auction">Would you like to enter the player auction? *</label>
-                <select id="auction" name="auction" value={formData.auction} onChange={handleChange} required>
-                  <option value="">Select</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select>
-              </div>
-
-              <div className="form-group">
                 <label htmlFor="jerseyName">Nickname / Jersey Name</label>
                 <input type="text" id="jerseyName" name="jerseyName" value={formData.jerseyName} onChange={handleChange} />
               </div>
