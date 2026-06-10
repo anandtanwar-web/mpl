@@ -36,6 +36,12 @@
   border-radius: 4px;
 }
 
+.mpl-logo-nav {
+  height: 55px;
+  width: auto;
+  border-radius: 4px;
+}
+
 .logo .dot {
   color: var(--color-yellow);
   margin-left: 2px;

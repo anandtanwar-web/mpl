@@ -43,6 +43,13 @@
   color: var(--text-white);
 }
 
+.hero-logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 30px;
+  filter: drop-shadow(0 0 20px rgba(0, 180, 216, 0.4));
+}
+
 .hero-btns .btn-primary {
   background: linear-gradient(to bottom, var(--color-orange), #e64a19);
   border: none;

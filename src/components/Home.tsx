@@ -25,6 +25,7 @@ const Home: React.FC = () => {
       <section id="home" className="hero">
         <div className="container">
           <div className="hero-content">
+            <img src="/mpl-logo.jpg" alt="MPL Logo" className="hero-logo fade-in" />
             <h1 className="fade-in">The Pulse of <span className="highlight">Cricket</span> in Manchester</h1>
             <p className="fade-in-delay">Manchester's premier franchise-based tennis ball cricket league. High stakes, high energy, professional cricket.</p>
             <div className="hero-btns fade-in-delay">
