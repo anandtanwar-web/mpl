@@ -83,7 +83,7 @@ const Home: React.FC = () => {
           </div>
           <div className="franchise-grid">
             {[
-              { id: 1, name: "Manchester Strikers", logo: "/strikers-logo.pdf" },
+              { id: 1, name: "Manchester Strikers", logo: "/strikers-logo.jpg" },
               { id: 2, name: "Manchester Royals", logo: "/royals-logo.jpg" },
               { id: 3, name: "Manchester Titans", logo: "/titans-logo.jpg" },
               { id: 4, name: "Manchester Gladiators", logo: "/gladiators-logo.jpg" },
