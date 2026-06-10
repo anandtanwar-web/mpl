@@ -146,7 +146,7 @@ const Registration = () => {
       const response = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         mode: 'cors',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
         body: JSON.stringify(submissionData)
       });
       
