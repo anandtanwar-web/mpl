@@ -34,7 +34,6 @@ test('should complete the full registration flow', async ({ page }) => {
     buffer: Buffer.from('fake-image-data'),
   });
 
-  await page.getByLabel('Would you like to enter the player auction? *').selectOption('Yes');
   await page.getByLabel('Code of conduct agreement * (I agree to follow tournament rules)').check();
   await page.getByLabel('Consent to use photos/videos *').check();
   await page.getByLabel('Data privacy consent *').check();
