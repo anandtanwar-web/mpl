@@ -293,3 +293,32 @@ textarea {
   margin-top: 15px;
   font-style: italic;
 }
+
+.registration-closed {
+  text-align: center;
+  padding: 40px 0;
+}
+
+.closed-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+}
+
+.registration-closed h2 {
+  font-size: 2rem;
+  color: var(--color-orange);
+  margin-bottom: 20px;
+}
+
+.registration-closed p {
+  color: var(--text-gray);
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.registration-closed .btn {
+  margin-top: 30px;
+}

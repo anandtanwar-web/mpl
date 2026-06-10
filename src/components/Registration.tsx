@@ -2,6 +2,7 @@ import { useState } from 'react';
 import '../styles/Registration.css';
 
 const Registration = () => {
+  const isRegistrationOpen = import.meta.env.VITE_REGISTRATION_OPEN !== 'false';
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     fullName: '',
@@ -202,15 +203,26 @@ const Registration = () => {
         <div className="registration-header">
           <h1>Player <span className="highlight">Registration</span></h1>
           <p>MPL Cricket Tournament 2026</p>
-          <div className="progress-bar">
-            {[1, 2, 3, 4].map(i => (
-              <div key={i} className={`progress-step ${step >= i ? 'active' : ''}`}></div>
-            ))}
-          </div>
+          {isRegistrationOpen && (
+            <div className="progress-bar">
+              {[1, 2, 3, 4].map(i => (
+                <div key={i} className={`progress-step ${step >= i ? 'active' : ''}`}></div>
+              ))}
+            </div>
+          )}
         </div>
 
-        <form onSubmit={handleSubmit}>
-          {step === 1 && (
+        {!isRegistrationOpen ? (
+          <div className="registration-closed">
+            <div className="closed-icon">🛑</div>
+            <h2>MPL Registrations are now closed</h2>
+            <p>Thank you for your interest in the Manchester Premier League 2026. The registration period has now ended.</p>
+            <p>Stay tuned to our social media channels for updates on the tournament schedule and auction results.</p>
+            <button className="btn btn-primary" onClick={() => window.location.href = '/'}>Back to Home</button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            {step === 1 && (
             <div className="form-step fade-in">
               <h2>Step 1: Personal Profile</h2>
               <div className="form-group">
@@ -460,6 +472,7 @@ const Registration = () => {
             </div>
           )}
         </form>
+        )}
       </div>
     </div>
   );
