@@ -49,32 +49,7 @@ describe('Registration Component', () => {
     expect(screen.getByText(/Please provide details on which dates you are not available \*/i)).toBeInTheDocument();
   });
 
-  it('validates duplicate email/phone and prevents moving to Step 2', async () => {
-    // Mock API to return exists: true
-    (fetch as any).mockResolvedValue({
-      json: () => Promise.resolve({ exists: true }),
-    });
-
-    render(<Registration />);
-    
-    fireEvent.change(screen.getByLabelText(/Full Name \*/i), { target: { value: 'John Doe' } });
-    fireEvent.change(screen.getByLabelText(/Email ID \*/i), { target: { value: 'john@example.com' } });
-    fireEvent.change(screen.getByLabelText(/Phone Number \*/i), { target: { value: '1234567890' } });
-    fireEvent.click(screen.getByLabelText(/Yes/i));
-
-    const nextButton = screen.getByText(/Next: Cricket Profile/i);
-    fireEvent.click(nextButton);
-
-    expect(await screen.findByText(/Verifying details.../i)).toBeInTheDocument();
-    expect(await screen.findByText(/A registration with this email or phone number already exists/i)).toBeInTheDocument();
-  });
-
-  it('navigates to Step 2 when all fields are valid and not a duplicate', async () => {
-    // Mock API to return exists: false
-    (fetch as any).mockResolvedValue({
-      json: () => Promise.resolve({ exists: false }),
-    });
-
+  it('navigates to Step 2 when all fields are valid', async () => {
     render(<Registration />);
     
     fireEvent.change(screen.getByLabelText(/Full Name \*/i), { target: { value: 'Jane Doe' } });

@@ -85,36 +85,11 @@ const Registration = () => {
     }
 
     if (step === 1) {
-      setStatus({ type: 'loading', message: 'Verifying details...' });
-      const isDuplicate = await checkDuplicate(formData.email, formData.phone);
-      if (isDuplicate) {
-        setStatus({ 
-          type: 'error', 
-          message: 'A registration with this email or phone number already exists.' 
-        });
-        return;
-      }
+      // Duplicate check removed from here
     }
 
     setStatus({ type: '', message: '' });
     setStep(prev => prev + 1);
-  };
-
-  const checkDuplicate = async (email: string, phone: string) => {
-    const APPS_SCRIPT_URL = import.meta.env.VITE_APPS_SCRIPT_URL;
-    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL === 'YOUR_COPIED_URL_HERE') return false;
-
-    try {
-      const url = `${APPS_SCRIPT_URL}?checkEmail=${encodeURIComponent(email)}&checkPhone=${encodeURIComponent(phone)}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      return data.exists;
-    } catch (error) {
-      console.error("Duplicate check failed:", error);
-      // If the script isn't updated yet or CORS/JSON issues occur, 
-      // we fail open but log the error.
-      return false; 
-    }
   };
 
   const prevStep = () => {
@@ -175,13 +150,15 @@ const Registration = () => {
         body: JSON.stringify(submissionData)
       });
       
-      const result = await response.text();
+      const result = await response.json();
       
-      if (result === 'Success') {
+      if (result.status === 'Success') {
         setStatus({ type: 'success', message: 'Registration submitted! Status: Pending Verification.' });
         setStep(5);
+      } else if (result.status === 'Duplicate') {
+        setStatus({ type: 'error', message: 'A registration with this email or phone number already exists.' });
       } else {
-        throw new Error(result || 'Submission failed');
+        throw new Error(result.message || 'Submission failed');
       }
     } catch (error) {
       console.error(error);
