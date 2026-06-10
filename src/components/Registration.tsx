@@ -163,7 +163,6 @@ const Registration = () => {
 
       const submissionData = {
         ...formData,
-        skills: formData.isWicketKeeper ? 'Wicket Keeping' : '',
         photoData: photoBase64,
         photoName: formData.photo ? formData.photo.name : '',
         photoType: formData.photo ? formData.photo.type : ''
