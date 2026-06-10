@@ -13,7 +13,7 @@ const Registration = () => {
     primaryRole: '',
     battingStyle: '',
     bowlingStyle: '',
-    skills: [] as string[],
+    isWicketKeeper: false,
     cricHeroesLink: '',
     medicalConditions: '',
     medicalDetails: '',
@@ -41,15 +41,6 @@ const Registration = () => {
     if (status.type === 'error') {
         setStatus({ type: '', message: '' });
     }
-  };
-
-  const handleCheckboxListChange = (skill: string) => {
-    setFormData(prev => {
-      const skills = prev.skills.includes(skill)
-        ? prev.skills.filter(s => s !== skill)
-        : [...prev.skills, skill];
-      return { ...prev, skills };
-    });
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -175,7 +166,7 @@ const Registration = () => {
 
       const submissionData = {
         ...formData,
-        skills: formData.skills.join(', '),
+        skills: formData.isWicketKeeper ? 'Wicket Keeping' : '',
         photoData: photoBase64,
         photoName: formData.photo ? formData.photo.name : '',
         photoType: formData.photo ? formData.photo.type : ''
@@ -304,19 +295,10 @@ const Registration = () => {
               </div>
 
               <div className="form-group">
-                <label>Skills & Strengths (select all that apply)</label>
-                <div className="checkbox-grid">
-                  {[
-                    "Power-hitting", "Anchor innings", "Finisher", "Swing bowling",
-                    "Pace bowling", "Death overs specialist", "Spin bowling", "Fielding (infield)",
-                    "Fielding (outfield)", "Wicket-keeping", "Captaincy/leadership", "All-round impact"
-                  ].map(skill => (
-                    <label key={skill} className="checkbox-item">
-                      <input type="checkbox" checked={formData.skills.includes(skill)} onChange={() => handleCheckboxListChange(skill)} />
-                      {skill}
-                    </label>
-                  ))}
-                </div>
+                <label className="checkbox-item">
+                  <input type="checkbox" name="isWicketKeeper" checked={formData.isWicketKeeper} onChange={handleChange} />
+                  Wicket Keeping
+                </label>
               </div>
 
               <div className="form-group">
