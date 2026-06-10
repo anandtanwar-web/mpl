@@ -143,10 +143,9 @@ const Registration = () => {
         photoType: formData.photo ? formData.photo.type : ''
       };
 
-      const response = await fetch(APPS_SCRIPT_URL, {
+      const response = await fetch('/api/register', {
         method: 'POST',
-        mode: 'cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(submissionData)
       });
       
