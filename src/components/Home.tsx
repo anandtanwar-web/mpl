@@ -51,13 +51,19 @@ const Home: React.FC = () => {
       <section id="about" className="about section">
         <div className="container">
           <div className="section-header">
-            <h2>About <span className="highlight">MPL</span></h2>
+            <h2>About <span className="highlight">MPL & Sanskruti</span></h2>
             <div className="underline"></div>
           </div>
           <div className="about-grid">
             <div className="about-text">
               <p>The Manchester Premier League (MPL) is redefining amateur cricket. Proudly organized under the banner of <strong>Sanskruti</strong>, our franchise-based model brings professional organization to the accessible format of tennis ball cricket.</p>
               <p>With colored kits, professional umpires, and digital scoring, we provide a platform for local talent to shine under the spotlight.</p>
+              
+              <div className="sanskruti-details" style={{ marginTop: '40px', paddingTop: '40px', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                <h3>About <span className="highlight">Sanskruti</span></h3>
+                <p>Sanskruti is a volunteer-driven sports and cultural community in Manchester that brings together people through a shared passion for cricket, culture, and community. Rooted in the Indian community and open to everyone, Sanskruti provides a welcoming platform for individuals and families to connect, participate, and build lasting friendships.</p>
+                <p>For over four years, we have successfully organized cricket tournaments and community events that promote sportsmanship, cultural exchange, and community spirit. From the successful Sale Premier League (SPL) to the growing Manchester Premier League (MPL), Sanskruti continues to create opportunities for players, supporters, and communities to come together and celebrate their love for the game.</p>
+              </div>
             </div>
             <div className="about-features">
               <div className="feature">
@@ -69,6 +75,16 @@ const Home: React.FC = () => {
                 <div className="feature-icon">🏆</div>
                 <h3>Franchise Model</h3>
                 <p>8 professional franchises competing for the ultimate glory.</p>
+              </div>
+              <div className="feature">
+                <div className="feature-icon">🤝</div>
+                <h3>Community Driven</h3>
+                <p>A volunteer-led initiative focused on bringing people together through sport.</p>
+              </div>
+              <div className="feature">
+                <div className="feature-icon">✨</div>
+                <h3>Inclusivity</h3>
+                <p>Open to everyone, providing a welcoming platform for all individuals and families.</p>
               </div>
             </div>
           </div>
