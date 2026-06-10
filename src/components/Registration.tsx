@@ -169,19 +169,24 @@ const Registration = () => {
         photoType: formData.photo ? formData.photo.type : ''
       };
 
-      await fetch(APPS_SCRIPT_URL, {
+      const response = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
-        mode: 'no-cors',
+        mode: 'cors',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(submissionData)
       });
       
-      // Since mode is no-cors, we won't get a readable response body, 
-      // but we assume success if no error was thrown.
-      setStatus({ type: 'success', message: 'Registration submitted! Status: Pending Verification.' });
-      setStep(5);
+      const result = await response.text();
+      
+      if (result === 'Success') {
+        setStatus({ type: 'success', message: 'Registration submitted! Status: Pending Verification.' });
+        setStep(5);
+      } else {
+        throw new Error(result || 'Submission failed');
+      }
     } catch (error) {
-      setStatus({ type: 'error', message: 'Something went wrong. Please try again.' });
+      console.error(error);
+      setStatus({ type: 'error', message: 'Something went wrong: ' + (error instanceof Error ? error.message : 'Please try again.') });
     }
   };
 
