@@ -70,4 +70,41 @@ describe('Registration Component', () => {
 
     expect(await screen.findByText(/Step 2: Cricket Profile/i)).toBeInTheDocument();
   });
+
+  it('shows error if uploaded photo exceeds 10MB', async () => {
+    render(<Registration />);
+    
+    // The photo upload is in Step 3, but the input is always present in the DOM (just hidden by conditional rendering)
+    // Actually, Step 3 is only rendered if step === 3.
+    // So we need to get to Step 3.
+    
+    // Mock API for Step 1
+    (fetch as any).mockResolvedValue({
+      json: () => Promise.resolve({ exists: false }),
+    });
+
+    // Step 1 -> Step 2
+    fireEvent.change(screen.getByLabelText(/Full Name \*/i), { target: { value: 'Jane Doe' } });
+    fireEvent.change(screen.getByLabelText(/Email ID \*/i), { target: { value: 'jane@example.com' } });
+    fireEvent.change(screen.getByLabelText(/Phone Number \*/i), { target: { value: '0987654321' } });
+    fireEvent.click(screen.getByLabelText(/Yes/i));
+    fireEvent.click(screen.getByText(/Next: Cricket Profile/i));
+
+    // Step 2 -> Step 3
+    expect(await screen.findByText(/Step 2: Cricket Profile/i)).toBeInTheDocument();
+    fireEvent.change(screen.getByLabelText(/Primary Role \*/i), { target: { value: 'Batsman' } });
+    fireEvent.change(screen.getByLabelText(/Batting Style \*/i), { target: { value: 'Right hand' } });
+    fireEvent.change(screen.getByLabelText(/CricHeroes Profile Link \*/i), { target: { value: 'http://cricheroes.com/123' } });
+    fireEvent.click(screen.getByText(/Next: Health & Consent/i));
+
+    // Now in Step 3
+    expect(await screen.findByText(/Step 3: Health, Media & Consent/i)).toBeInTheDocument();
+    
+    const fileInput = screen.getByLabelText(/Upload passport size photo \*/i);
+    const largeFile = new File(['a'.repeat(11 * 1024 * 1024)], 'large.jpg', { type: 'image/jpeg' });
+    
+    fireEvent.change(fileInput, { target: { files: [largeFile] } });
+    
+    expect(await screen.findByText(/File size exceeds 10MB. Please upload a smaller file./i)).toBeInTheDocument();
+  });
 });
