@@ -5,15 +5,32 @@ import Registration from './Registration';
 // Mock fetch for duplicate check
 vi.stubGlobal('fetch', vi.fn());
 
+// Mock import.meta.env
+vi.mock('import.meta', () => ({
+  env: {
+    VITE_APPS_SCRIPT_URL: 'http://mock-url.com',
+    VITE_REGISTRATION_OPEN: 'true'
+  }
+}));
+
 describe('Registration Component', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    // Reset env mock to default open for most tests
+    (import.meta.env as any).VITE_REGISTRATION_OPEN = 'true';
   });
 
-  it('renders Step 1: Personal Profile by default', () => {
+  it('renders Step 1: Personal Profile by default when registration is open', () => {
     render(<Registration />);
     expect(screen.getByText(/Step 1: Personal Profile/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Full Name \*/i)).toBeInTheDocument();
+  });
+
+  it('shows closed message when VITE_REGISTRATION_OPEN is false', () => {
+    (import.meta.env as any).VITE_REGISTRATION_OPEN = 'false';
+    render(<Registration />);
+    expect(screen.getByText(/MPL Registrations are now closed/i)).toBeInTheDocument();
+    expect(screen.queryByLabelText(/Full Name \*/i)).not.toBeInTheDocument();
   });
 
   it('shows error if mandatory fields are missing on Next click', async () => {
@@ -73,10 +90,6 @@ describe('Registration Component', () => {
 
   it('shows error if uploaded photo exceeds 10MB', async () => {
     render(<Registration />);
-    
-    // The photo upload is in Step 3, but the input is always present in the DOM (just hidden by conditional rendering)
-    // Actually, Step 3 is only rendered if step === 3.
-    // So we need to get to Step 3.
     
     // Mock API for Step 1
     (fetch as any).mockResolvedValue({
