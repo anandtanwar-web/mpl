@@ -32,6 +32,7 @@ const Navbar: React.FC = () => {
       <div className="container nav-container">
         <div className="logo" onClick={handleHomeClick}>
           <img src="/sanskruti-logo.jpg" alt="Sanskruti Logo" className="sanskruti-logo" />
+          MPL<span className="dot">.</span>
           <img src="/mpl-logo.jpg" alt="MPL Logo" className="mpl-logo-nav" />
         </div>
         <ul className="nav-links">

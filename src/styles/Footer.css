@@ -26,6 +26,19 @@
   border-radius: 4px;
 }
 
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.footer-mpl-logo {
+  height: 70px;
+  width: auto;
+  border-radius: 4px;
+}
+
 .footer-links h4, .footer-social h4 {
   margin-bottom: 20px;
   color: var(--primary-color);

@@ -32,8 +32,11 @@ const Footer: React.FC = () => {
       <div className="container footer-grid">
         <div className="footer-info">
           <img src="/sanskruti-logo.jpg" alt="Sanskruti Logo" className="footer-logo" />
-          <div className="logo" onClick={handleHomeClick} style={{ cursor: 'pointer' }}>
-            MPL<span className="dot">.</span>
+          <div className="logo-group">
+            <div className="logo" onClick={handleHomeClick} style={{ cursor: 'pointer' }}>
+              MPL<span className="dot">.</span>
+            </div>
+            <img src="/mpl-logo.jpg" alt="MPL Logo" className="footer-mpl-logo" />
           </div>
           <p>The premier franchise-based tennis ball cricket league in Manchester. Experience the thrill of professional cricket.</p>
         </div>
