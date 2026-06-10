@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
             <div className="logo" onClick={handleHomeClick} style={{ cursor: 'pointer' }}>
               MPL<span className="dot">.</span>
             </div>
-            <img src="/mpl-logo.jpg" alt="MPL Logo" className="footer-mpl-logo" />
+            <img src="/mpl-logo.png" alt="MPL Logo" className="footer-mpl-logo" />
           </div>
           <p>The premier franchise-based tennis ball cricket league in Manchester. Experience the thrill of professional cricket.</p>
         </div>
