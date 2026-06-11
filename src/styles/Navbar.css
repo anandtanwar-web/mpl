@@ -30,6 +30,13 @@
   gap: 12px;
 }
 
+.sponsor-logo-nav {
+  height: 40px;
+  background: white;
+  padding: 3px;
+  border-radius: 4px;
+}
+
 .sanskruti-logo {
   height: 45px;
   width: auto;
