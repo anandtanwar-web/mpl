@@ -41,6 +41,12 @@ const Footer: React.FC = () => {
           <p>The premier franchise-based tennis ball cricket league in Manchester. Experience the thrill of professional cricket.</p>
         </div>
         <div className="footer-links">
+          <h4>Title Sponsor</h4>
+          <a href="https://guidefs.co.uk" target="_blank" rel="noopener noreferrer">
+            <img src="/guide-financials-logo.png" alt="Guide Financial Services Logo" style={{ width: '150px', backgroundColor: 'white', padding: '5px', borderRadius: '5px' }} />
+          </a>
+        </div>
+        <div className="footer-links">
           <h4>Quick Links</h4>
           <ul>
             <li><button onClick={handleHomeClick} className="footer-link-btn">Home</button></li>
