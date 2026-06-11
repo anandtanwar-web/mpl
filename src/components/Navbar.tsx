@@ -31,12 +31,15 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <div className="container nav-container">
         <div className="logo" onClick={handleHomeClick}>
-          <a href="https://guidefs.co.uk" target="_blank" rel="noopener noreferrer">
-             <img src="/guide-financials-logo.png" alt="Guide Financial Services" className="sponsor-logo-nav" />
-          </a>
           <img src="/sanskruti-logo.jpg" alt="Sanskruti Logo" className="sanskruti-logo" />
           MPL<span className="dot">.</span>
           <img src="/mpl-logo.png" alt="MPL Logo" className="mpl-logo-nav" />
+          <div className="sponsor-nav-group">
+            <span className="sponsor-label">Title Sponsor</span>
+            <a href="https://guidefs.co.uk" target="_blank" rel="noopener noreferrer">
+              <img src="/guide-financials-logo.png" alt="Guide Financial Services" className="sponsor-logo-nav" />
+            </a>
+          </div>
         </div>
         <ul className="nav-links">
           <li>

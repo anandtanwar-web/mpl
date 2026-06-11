@@ -30,8 +30,24 @@
   gap: 12px;
 }
 
+.sponsor-nav-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-left: 10px;
+}
+
+.sponsor-label {
+  font-size: 0.6rem;
+  color: var(--color-yellow);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .sponsor-logo-nav {
-  height: 40px;
+  height: 65px; /* Matches mpl-logo-nav height */
+  width: auto;
   background: white;
   padding: 3px;
   border-radius: 4px;
