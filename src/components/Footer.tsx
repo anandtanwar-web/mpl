@@ -31,7 +31,7 @@ const Footer: React.FC = () => {
     <footer className="footer" id="contact">
       <div className="container footer-grid">
         <div className="footer-info">
-          <img src="/sanskruti-logo.jpg" alt="Sanskruti Logo" className="footer-logo" />
+          <img src="/sanskruti-logo.png" alt="Sanskruti Logo" className="footer-logo" />
           <div className="logo-group">
             <div className="logo" onClick={handleHomeClick} style={{ cursor: 'pointer' }}>
               MPL<span className="dot">.</span>
