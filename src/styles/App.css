@@ -101,3 +101,24 @@ h1, h2, h3 {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+.title-sponsor-banner {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 20px;
+  gap: 15px;
+}
+
+.title-sponsor-banner p {
+  color: #333;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.title-sponsor-banner img {
+  height: 30px;
+}

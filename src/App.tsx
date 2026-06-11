@@ -10,6 +10,12 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <div className="title-sponsor-banner">
+          <p>MPL 2026 Powered By</p>
+          <a href="https://guidefs.co.uk" target="_blank" rel="noopener noreferrer">
+            <img src="/guide-financials-logo.png" alt="Guide Financial Services" />
+          </a>
+        </div>
         <Navbar />
         <main>
           <Routes>
