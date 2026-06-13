@@ -46,6 +46,8 @@ const Footer: React.FC = () => {
           <a href="https://guidefs.co.uk" target="_blank" rel="noopener noreferrer">
             <img src="/guide-financials-logo.png" alt="Guide Financial Services Logo" style={{ width: '150px', backgroundColor: 'white', padding: '5px', borderRadius: '5px' }} />
           </a>
+          <h4 style={{ marginTop: '20px' }}>Trophy Sponsor</h4>
+          <img src="/sale-ics-logo.jpg" alt="Sale ICS Logo" style={{ width: '150px', borderRadius: '5px' }} />
         </div>
         <div className="footer-links">
           <h4>Quick Links</h4>
